@@ -3,6 +3,7 @@ class Transforma(object):
         self.keys = keys.split(",") #separo las llaves
 
     def strtoDict(self, values):
+        values = values.strip()
         file = values.split(",")
         if len(file) != len(self.keys):
             return None 

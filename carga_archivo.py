@@ -2,7 +2,7 @@ from transformador import Transforma
 
 def carga_archivo(nombre_archivo):
     archivo_cliente = open(nombre_archivo, "rt")
-    clave_cliente = archivo_cliente.readline()
+    clave_cliente = archivo_cliente.readline().strip()
     cliente = Transforma(clave_cliente)
     lista_cliente = []
 
@@ -12,7 +12,8 @@ def carga_archivo(nombre_archivo):
             linea_cliente = archivo_cliente.readline()
             continue
         d = cliente.strtoDict(linea_cliente)
-        lista_cliente.append(d)
+        if d is not None:
+            lista_cliente.append(d)
         linea_cliente = archivo_cliente.readline()
     archivo_cliente.close()
     return lista_cliente

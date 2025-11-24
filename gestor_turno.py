@@ -3,16 +3,18 @@ from cliente import Cliente
 from turno import Turno 
 from transformador import Transforma
 from carga_archivo import carga_archivo
+from clientes_agregar import guardar_cliente_csv, carga_cliente_csv
+
 
 
 
 class Peluqueria(object):
     def __init__(self, cliente, turno, profesional, slot, servicio):
-        self.cliente_transformador = Transforma("nombre,apellido,DNI,edad,fecha_naci,telefono")
+        self.cliente_transformador = Transforma("nombre,apellido,DNI,edad,fecha_nacimiento,telefono")
         self.id_turno_transformador = Transforma("id_turno,DNI_cliente,fecha,hora,tipo_servicio")
         #self.id_turno = []
         #self.cliente = []
-        self.cliente = carga_archivo(cliente)
+        self.cliente = carga_cliente_csv(cliente)
         self.id_turno = carga_archivo(turno)
         self.profesional = carga_archivo(profesional)
         self.slot = carga_archivo(slot)
@@ -28,6 +30,8 @@ class Peluqueria(object):
         #nuevo = Cliente(**valors)
         self.cliente.append(valors)
         print("Se a registrado al cliente ")
+
+        guardar_cliente_csv(self.cliente)
 
     def solicitar_turno(self):
         i = 0
@@ -50,6 +54,20 @@ class Peluqueria(object):
             return 
         
         dni = input("Ingresar DNI: ").strip()
+
+        n = 0
+        cliente_registrado = False
+        while n < len(self.cliente):
+            if self.cliente[n]["DNI"] == dni:
+                cliente_registrado = True
+                break
+            n = n + 1
+        
+        if not cliente_registrado:
+            print("El DNI no pertenece a ningun cliente registrado")
+            print("Registre al cliente antes de poder solicitar el turno")
+            return
+        
         fecha = input("Ingresar fecha: ").strip()
         hora = input("Ingresar hora: ").strip()
 
