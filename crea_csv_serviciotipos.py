@@ -13,11 +13,12 @@ def agregar_valores_csv(nombre_archivo):
         nombre = input("Ingrese nombre servicio: ")
         duracion = input("Ingrese duracion servicio: ")
         precio = input("Ingrese precio: ")
-        vector = [id_sevicio,nombre,duracion,precio]
+        profesional = input("Ingrese profesional: ")
+        vector = [id_sevicio,nombre,duracion,precio,profesional]
         fila = ",".join(vector) + "\n"
         file.writelines(fila)
-        id_sevicio = input("Ingrese nombre: ")
+        id_sevicio = input("Ingrese id_servicio: ")
     file.close()
 
-crea_csv("servicio.csv", ["Id_servicio", "Nombre_servicio", "Duracion_servicio", "Precio" ])
+crea_csv("servicio.csv", ["Id_servicio", "Nombre_servicio", "Duracion_servicio", "Precio", "Profesional" ])
 agregar_valores_csv("servicio.csv")

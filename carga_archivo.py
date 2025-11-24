@@ -11,8 +11,10 @@ def carga_archivo(nombre_archivo):
         if linea_cliente == "\n":
             linea_cliente = archivo_cliente.readline()
             continue
-        d = cliente.str2dict(linea_cliente)
+        d = cliente.strtoDict(linea_cliente)
         lista_cliente.append(d)
         linea_cliente = archivo_cliente.readline()
     archivo_cliente.close()
     return lista_cliente
+
+

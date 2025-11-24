@@ -53,3 +53,18 @@ class Profesional(object):
         self.slot = []
         self.servicio = []
     
+
+class Transforma(object):
+    def __init__(self, keys):
+        self.keys = keys.split(",") #separo las llaves
+
+    def strtoDict(self, values):
+        file = values.split(",")
+        if len(file) != len(self.keys):
+            return None 
+        d = {}
+        i = 0
+        while i < len(self.keys):
+            d[self.keys[i]] = file[i] #igualo las filas en ambos
+            i = i + 1
+        return d 

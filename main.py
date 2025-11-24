@@ -5,15 +5,22 @@ def mostrar_menu():
     print("SISTEMA DE TURNOS DE PELUQUERIA")
     print("1. Registrar nuevo cliente")
     print("2. Solicitar turno")
-    print("3. Listar turnos existentes")
+    print("3. Lista turnos existentes")
     print("4. Modificar turno")
     print("5. Cancelar turno")
     print("6. Guardar datos en CSV")
-    print("7. Salir")
+    print("7. Cargar turnos en CSV")
+    print("8. Salir")
     print("---------------------")
 
 def main():
-    gestion = Peluqueria()
+    gestion = Peluqueria(
+        "cliente.csv",
+        "turno.csv",
+        "profesional.csv",
+        "slot_diciembre.csv",
+        "servicio.csv"
+    )
     
 
     while True:
@@ -31,8 +38,10 @@ def main():
         elif opciones == "5":
             gestion.cancelar_turno()
         elif opciones == "6":
-            gestion.guardar_turno()
+            gestion.guardar_turno_csv()
         elif opciones == "7":
+            gestion.cargar_turno_csv()
+        elif opciones == "8":
             print("Saliendo del sistema")
             break
         

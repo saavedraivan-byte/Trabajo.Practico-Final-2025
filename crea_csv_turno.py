@@ -10,14 +10,14 @@ def agregar_valores_csv(nombre_archivo):
     file = open(nombre_archivo, "at")
     id_turno = input("Ingrese ID turno: ")
     while id_turno != "":
-        DNI_cliente = input("Ingrese DNI: ")
+        DNI_cliente = input("Ingrese DNI cliente: ")
         fecha = input("Ingrese fecha: ")
         hora = input("Ingrese hora: ")
         tipo_servicio = input("Ingrese servicio: ")
         vector = [id_turno,DNI_cliente,fecha,hora,tipo_servicio]
         fila = ",".join(vector) + "\n"
         file.writelines(fila)
-        id_turno = input("Ingrese nombre: ")
+        id_turno = input("Ingrese ID turno: ")
     file.close()
 
 crea_csv("turno.csv", ["id_turno", "DNI_cliente", "fecha", "hora", "tipo_servicio" ])
