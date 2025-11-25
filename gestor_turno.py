@@ -140,11 +140,20 @@ class Peluqueria(object):
         n_hora = input(f"Nueva hora (actual: {turno_encontrado['hora']}): ").strip()
         if n_hora:
             turno_encontrado["hora"] = n_hora
-        n_servicio = input(f"Nuevo servicio (actual: {turno_encontrado['tipo_servicio']}): ").strip()
+            
+
+        print(" Servicios disponibles")
+        k = 0
+        while k < len(self.servicio):
+            print(self.servicio[k]["Id_servicio"], "-", self.servicio[k]["Nombre_servicio"])
+            k = k + 1
+
+
+        n_servicio = input(f"Nuevo servicio (actual: {turno_encontrado['tipo_servicio']}): ").strip()    
         if n_servicio:
             turno_encontrado["tipo_servicio"] = n_servicio
-
-        print("Truno modificado exitosamente")
+        
+        print("Turno modificado exitosamente")
                 
                 
 
