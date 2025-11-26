@@ -174,6 +174,9 @@ class Peluqueria(object):
         self.guardar_turno_csv         
 
     def cancelar_turno(self):
+        print("Turnos existentes: ")
+        self.listar_turno()
+
         id_acancelar = input("Ingrese el ID del turno a cancelar: ").strip()
         i = 0
         id_encontrado = False
