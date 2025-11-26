@@ -67,6 +67,19 @@ class Peluqueria(object):
             print("El DNI no pertenece a ningun cliente registrado")
             print("Registre al cliente antes de poder solicitar el turno")
             return
+        print("Turnos disponibles: ")
+        m = 0
+        disponibilidad = False
+        while m < len(self.slot):
+            slot = self.slot[m]
+            if slot["disponibilidad"] == "True":
+                print(f"- {slot['fecha']} a las {slot['hora']}")
+                disponibilidad = True
+            m = m + 1
+        
+        if not disponibilidad:
+            print("No hay turnos disponibles")
+            return
         
         fecha = input("Ingresar fecha: ").strip()
         hora = input("Ingresar hora: ").strip()
@@ -82,10 +95,10 @@ class Peluqueria(object):
         k = 0
         while k < len(self.slot):
             slot_act = self.slot[k]
-            slot_date = datetime.strptime(slot_act["Fecha"] + " " + slot_act["Hora"], "%d-%m-%Y %H:%M")
+            slot_date = datetime.strptime(slot_act["fecha"] + " " + slot_act["hora"], "%d-%m-%Y %H:%M")
 
-            if slot_date == fecha_turno and slot_act["Disponibilidad"] == "True":
-                slot_act["Disponibilidad"] = "False"
+            if slot_date == fecha_turno and slot_act["disponibilidad"] == "True":
+                slot_act["disponibilidad"] = "False"
                 validar_turno = True 
                 break
             k = k + 1
@@ -121,6 +134,9 @@ class Peluqueria(object):
             i = i + 1
 
     def modificar_turno(self):
+        print("Turnos existentes: ")
+        self.listar_turno()
+        
         turno_modif = input("Ingrese el ID del turno a modificar: ").strip()
         i = 0
         turno_encontrado = None
@@ -154,8 +170,8 @@ class Peluqueria(object):
             turno_encontrado["tipo_servicio"] = n_servicio
         
         print("Turno modificado exitosamente")
-                
-                
+
+        self.guardar_turno_csv         
 
     def cancelar_turno(self):
         id_acancelar = input("Ingrese el ID del turno a cancelar: ").strip()
@@ -181,7 +197,7 @@ class Peluqueria(object):
 
         self.id_turno = n_lista
         print("Turno cancelado exitosamente")
-        
+        self.guardar_turno_csv
 
     def guardar_turno_csv(self, nombre_archivo = "turno.csv"):
         archivos = open(nombre_archivo, "wt")
@@ -202,7 +218,6 @@ class Peluqueria(object):
 
         archivos.close()
         print("Turnos guardados correctamente")
-
 
     def cargar_turno_csv(self):
         self.id_turno = carga_archivo("turno.csv")

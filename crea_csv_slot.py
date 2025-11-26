@@ -19,6 +19,6 @@ def agregar_valores_csv(nombre_archivo):
         fecha = input("Ingrese fecha de turno: ")
     file.close()
 
-crea_csv("slot_diciembre.csv", ["Fecha", "Hora", "Disponibilidad", "Id_turno" ])
+crea_csv("slot_diciembre.csv", ["fecha", "hora", "disponibilidad", "id_turno" ])
 agregar_valores_csv("slot_diciembre.csv")
 

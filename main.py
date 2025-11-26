@@ -8,9 +8,9 @@ def mostrar_menu():
     print("3. Lista turnos existentes")
     print("4. Modificar turno")
     print("5. Cancelar turno")
-    print("6. Guardar datos en CSV")
-    print("7. Cargar turnos en CSV")
-    print("8. Salir")
+    #print("6. Guardar datos en CSV")
+    #print("7. Cargar turnod en CSV")
+    print("6. Salir")
     print("---------------------")
 
 def main():
@@ -37,11 +37,11 @@ def main():
             gestion.modificar_turno()
         elif opciones == "5":
             gestion.cancelar_turno()
+        #elif opciones == "6":
+        #  gestion.guardar_turno_csv()
+        #elif opciones == "7":  
+         #  gestion.cargar_turno_csv()  
         elif opciones == "6":
-            gestion.guardar_turno_csv()
-        elif opciones == "7":
-            gestion.cargar_turno_csv()
-        elif opciones == "8":
             print("Saliendo del sistema")
             break
         

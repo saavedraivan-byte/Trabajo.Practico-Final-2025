@@ -1,4 +1,4 @@
-Fecha,Hora,Disponibilidad,Id_turno
+fecha,hora,disponibilidad,id_turno
 01-12-2025,09:00,True,
 01-12-2025,10:00,True,
 01-12-2025,11:00,True,
@@ -8,3 +8,6 @@ Fecha,Hora,Disponibilidad,Id_turno
 15-12-2025,09:00,True,
 15-12-2025,10:00,True,
 15-12-2025,11:00,True,
+22-12-2025,09:00,True,
+22-12-2025,10:00,True,
+22-12-2025,11:00,True,
